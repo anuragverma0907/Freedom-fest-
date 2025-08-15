@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Independence Day - Personalized Greetings</title>
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff9933 0%, #ffffff 50%, #138808 100%); /* Indian Flag Colors */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Main Container Styling */
+        .container {
+            background: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+            overflow: hidden; /* For ripples and sparkles */
+        }
+
+        /* Top Border Gradient */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff9933, #ffffff, #138808); /* Flag colors */
+        }
+
+        /* Flag Container */
+        .flag-container {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        /* Flag Pole */
+        .flag-pole {
+            position: absolute;
+            left: -5px;
+            top: -10px;
+            width: 6px;
+            height: 80px;
+            background: #333;
+            border-radius: 3px;
+        }
+
+        /* Flag Styling */
+        .flag {
+            width: 80px;
+            height: 60px;
+            margin: 0 auto 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .saffron {
+            background: #ff9933; /* Saffron color */
+            height: 33.33%;
+            position: relative;
+        }
+
+        .white {
+            background: #ffffff; /* White color */
+            height: 33.33%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .green {
+            background: #138808; /* Green color */
+            height: 33.33%;
+        }
+
+        /* Ashoka Chakra */
+        .chakra {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #000080; /* Navy Blue */
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .chakra::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, transparent 30%, #000080 30%, #000080 70%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        /* Heading Styling */
+        h1 {
+            color: #333;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff9933, #138808); /* Gradient text */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Subtitle Styling */
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+
+        /* Form Container */
+        .form-container {
+            background: linear-gradient(135deg, #ff9933, #138808); /* Background gradient */
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 153, 51, 0.8), rgba(19, 136, 8, 0.8)); /* Overlay gradient */
+            z-index: 1;
+        }
+
+        .form-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Input Field */
+        input[type="text"] {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            color: #333;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"]::placeholder {
+            color: #888;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            background: linear-gradient(45deg, #e91e63, #9c27b0); /* Pink to Purple gradient */
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(233, 30, 99, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Result Section */
+        .result-container {
+            display: none; /* Hidden by default */
+            background: linear-gradient(135deg, #00bcd4, #009688); /* Teal to Green gradient */
+            padding: 30px;
+            border-radius: 20px;
+            color: white;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 188, 212, 0.9), rgba(0, 150, 136, 0.9)); /* Overlay gradient */
+            z-index: 1;
+        }
+
+        .result-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Greeting Card */
+        .greeting-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .greeting-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff9933, #ffffff, #138808); /* Flag colors */
+        }
+
+        .greeting-text {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff9933, #138808); /* Gradient text */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .date-text {
+            color: #666;
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        .name-display {
+            color: #138808;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        /* Download Button */
+        .download-btn {
+            background: linear-gradient(45deg, #ff5722, #f44336); /* Orange to Red gradient */
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 20px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(255, 87, 34, 0.3);
+        }
+
+        /* Footer Styling */
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        /* Back Button */
+        .back-btn {
+            background: linear-gradient(45deg, #607d8b, #455a64); /* Grey to Dark Grey gradient */
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(96, 125, 139, 0.3);
+        }
+
+        /* Animations */
+        .animation {
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sparkle Effects */
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #ffeb3b; /* Yellow */
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Individual sparkle positioning and delay */
+        .sparkle:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 60%; left: 80%; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { top: 80%; left: 30%; animation-delay: 1s; }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .subtitle {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sparkle animations -->
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+
+        <div id="greeting-form" class="animation">
+            <div class="flag-container">
+                <div class="flag-pole"></div>
+                <div class="flag">
+                    <div class="saffron"></div>
+                    <div class="white">
+                        <div class="chakra"></div>
+                    </div>
+                    <div class="green"></div>
+                </div>
+            </div>
+
+            <h1>Independence Day Greeting</h1>
+            <p class="subtitle">Enter your name to receive a personalized greeting</p>
+
+            <div class="form-container">
+                <div class="form-content">
+                    <input type="text" id="nameInput" placeholder="Enter your name here" maxlength="30">
+                    <button class="submit-btn" onclick="generateGreeting()">Submit</button>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p>Built with love for our nation</p>
+                <!-- Updated to 79th Independence Day -->
+                <p>Celebrating 79 years of freedom</p>
+                <!-- Developed by Anurag Verma added here -->
+                <p>Developed by Anurag Verma</p>
+            </div>
+        </div>
+
+        <div id="result-section" class="result-container">
+            <div class="result-content">
+                <div class="greeting-card">
+                    <div class="greeting-text">Happy Independence Day!</div>
+                    <!-- Updated year to 2025 -->
+                    <div class="date-text">15 August 2025</div> 
+                    <div>
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1040c4ec-8a71-458f-b079-4af5c74873eb.png" alt="Independence Day celebration with Indian flag waving proudly against blue sky with fireworks and patriotic decorations in saffron white and green colors" style="width: 100%; max-width: 250px; border-radius: 10px; margin: 15px 0;" />
+                    </div>
+                    <div id="personalMessage"></div>
+                    <div class="name-display" id="displayName"></div>
+                </div>
+                
+                <button class="download-btn" onclick="downloadGreeting()">Download Greeting</button>
+                <button class="back-btn" onclick="goBack()">Create Another</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * Generates a personalized Independence Day greeting based on the input name.
+         * Hides the form and displays the result section with a random message and current time.
+         */
+        function generateGreeting() {
+            const nameInput = document.getElementById('nameInput');
+            const name = nameInput.value.trim();
+            
+            // Validate name input
+            if (name === '') {
+                // Using a custom modal/message box instead of alert()
+                showMessageBox('Please enter your name!');
+                return;
+            }
+
+            // Hide form and show result section with animation
+            document.getElementById('greeting-form').style.display = 'none';
+            document.getElementById('result-section').style.display = 'block';
+            document.getElementById('result-section').classList.add('animation');
+            
+            // Array of personalized messages
+            const personalMessages = [
+                `Dear ${name}, may this Independence Day fill your heart with pride and joy!`,
+                `${name}, let's celebrate the spirit of freedom and unity together!`,
+                `Wishing you ${name}, a very Happy Independence Day! Jai Hind!`,
+                `${name}, may the tricolor always fly high in your heart!`,
+                `Dear ${name}, let's honor our heroes and celebrate our beautiful nation!`
+            ];
+            
+            // Select a random message from the array
+            const randomMessage = personalMessages[Math.floor(Math.random() * personalMessages.length)];
+            document.getElementById('personalMessage').textContent = randomMessage;
+            document.getElementById('displayName').textContent = `- ${name}`;
+            
+            // Add current time to the greeting card
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-IN', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true 
+            });
+            // Update year to 2025
+            document.querySelector('.date-text').textContent = `15 August 2025 • ${timeString}`;
+        }
+
+        /**
+         * Simulates the download functionality for the greeting.
+         * In a real application, this would generate and download an image.
+         */
+        function downloadGreeting() {
+            const name = document.getElementById('displayName').textContent.replace('- ', '');
+            // Using a custom modal/message box instead of alert()
+            showMessageBox(`Downloading personalized Independence Day greeting for ${name}!\n\nNote: This is a demo. In a real application, this would generate and download an image file.`);
+        }
+
+        /**
+         * Hides the result section and shows the greeting form,
+         * allowing the user to create another greeting.
+         */
+        function goBack() {
+            document.getElementById('result-section').style.display = 'none';
+            document.getElementById('greeting-form').style.display = 'block';
+            document.getElementById('greeting-form').classList.add('animation');
+            document.getElementById('nameInput').value = ''; // Clear input field
+        }
+
+        /**
+         * Adds support for pressing the Enter key to generate a greeting.
+         */
+        document.getElementById('nameInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                generateGreeting();
+            }
+        });
+
+        /**
+         * DOM Content Loaded: Executes when the initial HTML document has been completely loaded and parsed.
+         * Adds initial animations and effects.
+         */
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate flag on load
+            const flag = document.querySelector('.flag');
+            flag.style.animation = 'slideInUp 1s ease-out';
+            
+            // Add floating animation to sparkles with staggered delays
+            const sparkles = document.querySelectorAll('.sparkle');
+            sparkles.forEach((sparkle, index) => {
+                sparkle.style.animationDelay = `${index * 0.5}s`;
+            });
+        });
+
+        /**
+         * Adds a ripple effect to all buttons on click.
+         */
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.pointerEvents = 'none'; // Ensure ripple doesn't block clicks
+                
+                // Set button position to relative for ripple positioning
+                this.style.position = 'relative'; 
+                this.style.overflow = 'hidden'; // Hide ripple outside button bounds
+                this.appendChild(ripple);
+                
+                // Remove ripple after animation
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple animation CSS to the head of the document
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        /**
+         * Custom message box function to replace alert().
+         * Displays a simple modal-like message to the user.
+         */
+        function showMessageBox(message) {
+            const messageBox = document.createElement('div');
+            messageBox.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                z-index: 1000;
+                text-align: center;
+                max-width: 300px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                color: #333;
+                font-size: 1.1em;
+            `;
+            messageBox.textContent = message;
+
+            const closeButton = document.createElement('button');
+            closeButton.textContent = 'OK';
+            closeButton.style.cssText = `
+                background: linear-gradient(45deg, #00bcd4, #009688);
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 15px;
+                margin-top: 15px;
+                cursor: pointer;
+                font-size: 1em;
+                transition: all 0.3s ease;
+            `;
+            closeButton.onclick = () => messageBox.remove();
+            
+            messageBox.appendChild(closeButton);
+            document.body.appendChild(messageBox);
+        }
+    </script>
+</body>
+</html>
